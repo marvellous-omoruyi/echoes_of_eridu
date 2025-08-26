@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://d2t7uhwt3fmhu"]
+
+[ext_resource type="Script" uid="uid://cp50f0jasawmn" path="res://Scenes/player/ball/glowing_ball.gd" id="1_8unoi"]
+[ext_resource type="Texture2D" uid="uid://d0m822o4k4vdx" path="res://Scenes/player/ball/charged1.png" id="1_o06sh"]
+[ext_resource type="Texture2D" uid="uid://bbl57j3p6scit" path="res://Scenes/player/ball/charged2.png" id="2_8unoi"]
+[ext_resource type="Texture2D" uid="uid://dew04pdcadehd" path="res://Scenes/player/ball/charged3.png" id="3_oki2e"]
+[ext_resource type="Texture2D" uid="uid://cvjnte3em5rds" path="res://Scenes/player/ball/charged4.png" id="4_t6r8a"]
+[ext_resource type="Texture2D" uid="uid://co1ocskcv13md" path="res://Scenes/player/ball/charged5.png" id="5_64axp"]
+[ext_resource type="Texture2D" uid="uid://b1mnfyu5ncfi1" path="res://Scenes/player/ball/charged6.png" id="6_tuixm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_40gw7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_o06sh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8unoi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_oki2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t6r8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_64axp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tuixm")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lbf6o"]
+radius = 51.0
+height = 102.0
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_8unoi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_40gw7")
+animation = &"shoot"
+autoplay = "shoot"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.4, 1)
+shape = SubResource("CapsuleShape2D_lbf6o")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

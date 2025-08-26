@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1f6cioem1ect"]
+
+[ext_resource type="Texture2D" uid="uid://cig2djv48gq2x" path="res://Scenes/player/ball/20250825_1656_Glowing Slime Weapon_simple_compose_01k3gz2wr8ehnbk9ja80jx59c3.png" id="1_tk6oe"]
+[ext_resource type="Texture2D" uid="uid://dsycacg5t42bk" path="res://Scenes/player/ball/20250825_1656_Glowing Slime Weapon_simple_compose_01k3gz2wr5e2w9kfs6gvg52cww.png" id="2_kvr34"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o5ual"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tk6oe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kvr34")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yxehx"]
+radius = 108.374
+
+[node name="Area2D" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, 7)
+scale = Vector2(0.337402, 0.334341)
+sprite_frames = SubResource("SpriteFrames_o5ual")
+autoplay = "default"
+frame = 1
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yxehx")
