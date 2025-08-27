@@ -5760,7 +5760,7 @@ sources/0 = SubResource("TileSetAtlasSource_h7ciu")
 [node name="LevelScene" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2(-968, 3)
+position = Vector2(-977, -5)
 tile_set = SubResource("TileSet_1gqvq")
 format = 2
 layer_0/name = "Ground"
