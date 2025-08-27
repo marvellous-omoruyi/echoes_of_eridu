@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1f6cioem1ect"]
+[gd_scene load_steps=6 format=3 uid="uid://d1f6cioem1ect"]
 
+[ext_resource type="Script" uid="uid://77g4c05umi2r" path="res://Scenes/player/ball/slime_ball.gd" id="1_kvr34"]
 [ext_resource type="Texture2D" uid="uid://cig2djv48gq2x" path="res://Scenes/player/ball/20250825_1656_Glowing Slime Weapon_simple_compose_01k3gz2wr8ehnbk9ja80jx59c3.png" id="1_tk6oe"]
 [ext_resource type="Texture2D" uid="uid://dsycacg5t42bk" path="res://Scenes/player/ball/20250825_1656_Glowing Slime Weapon_simple_compose_01k3gz2wr5e2w9kfs6gvg52cww.png" id="2_kvr34"]
 
@@ -21,6 +22,7 @@ animations = [{
 radius = 108.374
 
 [node name="Area2D" type="Area2D"]
+script = ExtResource("1_kvr34")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(4, 7)

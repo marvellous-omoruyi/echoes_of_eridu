@@ -67,7 +67,7 @@ func _on_shoot_timer_timeout():
 	
 # This function runs when a body enters the DetectionZone
 func _on_detection_zone_body_entered(body: Node2D):
-	if body.is_in_group("playddder"):
+	if body.is_in_group("player"):
 		is_player_in_range = true
 		shoot_timer.start()
 
