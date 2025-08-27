@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dhb6kb2e8chkq"]
+[gd_scene load_steps=24 format=3 uid="uid://dhb6kb2e8chkq"]
 
 [ext_resource type="Script" uid="uid://c65g213bt548" path="res://slime.gd" id="1_y0pxb"]
 [ext_resource type="Texture2D" uid="uid://bx341l12xee0o" path="res://Scenes/Levels/ai/ChatGPT Image Aug 24, 2025, 03_55_23 AM.png" id="2_kb0rj"]
@@ -150,6 +150,9 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y0pxb"]
 radius = 7.17655
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0pxb"]
+size = Vector2(1867, 542)
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_y0pxb")
 
@@ -168,3 +171,17 @@ shape = SubResource("CapsuleShape2D_y0pxb")
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="MeleeRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeRange"]
+position = Vector2(-58.5, -134)
+shape = SubResource("RectangleShape2D_y0pxb")
+
+[node name="MeleeCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="MeleeRange" to="." method="_on_melee_range_body_entered"]
+[connection signal="body_exited" from="MeleeRange" to="." method="_on_melee_range_body_exited"]
+[connection signal="timeout" from="MeleeCooldownTimer" to="." method="_on_melee_cooldown_timer_timeout"]
