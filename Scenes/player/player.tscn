@@ -157,7 +157,7 @@ animations = [{
 radius = 132.0
 height = 514.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_eo61r")
 glowing_ball_scene = ExtResource("2_spm8d")
