@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://f76ipclmm6va"]
+[gd_scene load_steps=34 format=3 uid="uid://f76ipclmm6va"]
 
 [ext_resource type="Texture2D" uid="uid://dtwdevc8cuy58" path="res://Scenes/player/playerImg/20250821_1648_Character Idle Animation_remix_01k36mx3adf8gbcmvtch16n986.png" id="1_6k3cy"]
 [ext_resource type="Script" uid="uid://cbjqu1tpisjxe" path="res://Scenes/player/player.gd" id="1_eo61r"]
@@ -10,8 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://bmfaijc2vcxeb" path="res://Scenes/player/dash2.png" id="3_ic3d6"]
 [ext_resource type="Texture2D" uid="uid://bo8q8gmvt3vc2" path="res://Scenes/player/playerImg/run anim 2.png" id="3_t3oqc"]
 [ext_resource type="Texture2D" uid="uid://d251fx84xsfse" path="res://Scenes/player/playerImg/jump2.png" id="4_h0khc"]
+[ext_resource type="Texture2D" uid="uid://dc2cq7n8cfeyy" path="res://Scenes/Levels/bGs/sprint0.png" id="4_kysaj"]
 [ext_resource type="Texture2D" uid="uid://d2de5igikxo16" path="res://Scenes/player/playerImg/run anim 3.png" id="4_p8lfk"]
 [ext_resource type="Texture2D" uid="uid://dp744g5qi11u3" path="res://Scenes/player/playerImg/jump3.png" id="5_6vj4j"]
+[ext_resource type="Texture2D" uid="uid://d0121o8xvkext" path="res://Scenes/Levels/bGs/sprint1.png" id="5_egohg"]
 [ext_resource type="Texture2D" uid="uid://dcrvo84bvkqkj" path="res://Scenes/player/playerImg/run anim 4.png" id="5_uawwb"]
 [ext_resource type="Texture2D" uid="uid://dto0wy361t3gl" path="res://Scenes/player/playerImg/run anim 5.png" id="6_ag54m"]
 [ext_resource type="Texture2D" uid="uid://b76hghxnbasgo" path="res://Scenes/player/playerImg/jump4.png" id="6_nyrd7"]
@@ -77,6 +79,12 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_kysaj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_egohg")
+}, {
 "duration": 1.0,
 "texture": ExtResource("2_nyrd7")
 }, {
@@ -164,12 +172,11 @@ script = ExtResource("1_eo61r")
 glowing_ball_scene = ExtResource("2_spm8d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(18, -7)
+position = Vector2(20, -7)
 sprite_frames = SubResource("SpriteFrames_rwmec")
-animation = &"attack"
+animation = &"dash"
 autoplay = "idle"
-frame = 2
-frame_progress = 1.0
+frame_progress = 0.483872
 offset = Vector2(0, -239)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
