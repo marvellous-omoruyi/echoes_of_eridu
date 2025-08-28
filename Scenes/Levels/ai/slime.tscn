@@ -96,7 +96,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rr7lc")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 5.0
 }, {
@@ -163,8 +163,7 @@ script = ExtResource("1_y0pxb")
 position = Vector2(-2, -2)
 scale = Vector2(1.9467, 1.9467)
 sprite_frames = SubResource("SpriteFrames_fj0kf")
-animation = &"idle"
-frame_progress = 0.987021
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-11, -5)
