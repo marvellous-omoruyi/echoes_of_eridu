@@ -172,11 +172,11 @@ script = ExtResource("1_eo61r")
 glowing_ball_scene = ExtResource("2_spm8d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(20, -7)
+position = Vector2(22, -7)
 sprite_frames = SubResource("SpriteFrames_rwmec")
 animation = &"dash"
 autoplay = "idle"
-frame_progress = 0.483872
+frame_progress = 0.261801
 offset = Vector2(0, -239)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
