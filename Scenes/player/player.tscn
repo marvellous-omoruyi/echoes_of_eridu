@@ -176,7 +176,7 @@ position = Vector2(22, -7)
 sprite_frames = SubResource("SpriteFrames_rwmec")
 animation = &"dash"
 autoplay = "idle"
-frame_progress = 0.261801
+frame_progress = 0.687133
 offset = Vector2(0, -239)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
