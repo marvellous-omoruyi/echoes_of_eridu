@@ -5812,7 +5812,7 @@ offset_bottom = 682.0
 texture = ExtResource("3_46twm")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("5_t2pc5")]
-position = Vector2(2366, -295)
+position = Vector2(2357, -103)
 glowing_ball_scene = ExtResource("5_e3qk5")
 
 [node name="CharacterBody2D2" parent="." instance=ExtResource("6_e3qk5")]

@@ -156,14 +156,14 @@ size = Vector2(1867, 542)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kb0rj"]
 size = Vector2(65.1306, 44.2836)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_y0pxb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -2)
 scale = Vector2(1.9467, 1.9467)
 sprite_frames = SubResource("SpriteFrames_fj0kf")
-animation = &"attack"
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-11, -5)

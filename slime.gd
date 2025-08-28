@@ -69,7 +69,6 @@ func _on_animated_sprite_2d_animation_finished():
 		is_attacking = false # Reset the state so the slime can patrol again.
 
 func shoot_glowing_ball():
-	# Failsafe check to make sure the projectile scene is assigned in the editor.
 	if glowing_ball_scene == null:
 		print("ERROR: Glowing Ball Scene is not assigned in the Inspector!")
 		return
@@ -77,25 +76,25 @@ func shoot_glowing_ball():
 	var glowing_ball_instance = glowing_ball_scene.instantiate()
 	var player = get_tree().get_first_node_in_group("player")
 	if not player:
-		is_attacking = false # Failsafe in case the player is destroyed
+		is_attacking = false
 		return
 		
-	# --- HORIZONTAL SHOOTING LOGIC ---
-	# 1. Get the raw direction vector to the player.
 	var shoot_direction = player.global_position - global_position
-	# 2. Erase the vertical component to make the shot horizontal.
 	shoot_direction.y = 0
-	# 3. Normalize the vector to get a pure direction without distance information.
 	shoot_direction = shoot_direction.normalized()
-	# --- END OF LOGIC ---
 
-	glowing_ball_instance.global_position = global_position
+	# --- NEW SPAWN LOGIC ---
+	# Define an offset to spawn the ball away from the center
+	var spawn_offset = 60.0 
+	# Calculate the spawn position in front of the slime
+	var spawn_position = global_position + (shoot_direction * spawn_offset)
 	
-	# Set the "direction" variable on the projectile's own script.
+	glowing_ball_instance.global_position = spawn_position
+	# --- END OF NEW LOGIC ---
+	
 	glowing_ball_instance.set("direction", shoot_direction)
 
 	get_tree().get_root().add_child(glowing_ball_instance)
-
 # --- Signal Connections ---
 
 func _on_detection_zone_body_entered(body):
