@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://f76ipclmm6va"]
+[gd_scene load_steps=41 format=3 uid="uid://f76ipclmm6va"]
 
 [ext_resource type="Texture2D" uid="uid://dtwdevc8cuy58" path="res://Scenes/player/playerImg/20250821_1648_Character Idle Animation_remix_01k36mx3adf8gbcmvtch16n986.png" id="1_6k3cy"]
 [ext_resource type="Script" uid="uid://cbjqu1tpisjxe" path="res://Scenes/player/player.gd" id="1_eo61r"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://b76hghxnbasgo" path="res://Scenes/player/playerImg/jump4.png" id="6_nyrd7"]
 [ext_resource type="Texture2D" uid="uid://dgg5ffibta8tf" path="res://Scenes/player/playerImg/run anim 6.png" id="7_g7b1g"]
 [ext_resource type="Texture2D" uid="uid://d2bm03w15hlok" path="res://Scenes/player/playerImg/jump5.png" id="7_ic3d6"]
+[ext_resource type="Texture2D" uid="uid://5dmy4oqxpl7v" path="res://Scenes/player/playerImg/ChatGPT Image Aug 28, 2025, 10_54_25 AM.png" id="8_egohg"]
 [ext_resource type="Texture2D" uid="uid://du8fj0ll3jtii" path="res://Scenes/player/playerImg/run anim 8.png" id="8_h0khc"]
 [ext_resource type="Texture2D" uid="uid://7pa38l66joy8" path="res://Scenes/player/playerImg/run anim 7.png" id="14_h0khc"]
 
@@ -33,6 +34,30 @@ region = Rect2(463, 19, 463, 546)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ua3np"]
 atlas = ExtResource("3_dpkfr")
 region = Rect2(926, 19, 463, 546)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnu3u"]
+atlas = ExtResource("8_egohg")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ge7b5"]
+atlas = ExtResource("8_egohg")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v44ur"]
+atlas = ExtResource("8_egohg")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eges4"]
+atlas = ExtResource("8_egohg")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l71q1"]
+atlas = ExtResource("8_egohg")
+region = Rect2(0, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wib7k"]
+atlas = ExtResource("8_egohg")
+region = Rect2(512, 1024, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6vj4j"]
 atlas = ExtResource("1_6k3cy")
@@ -93,6 +118,29 @@ animations = [{
 }],
 "loop": true,
 "name": &"dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnu3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ge7b5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v44ur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eges4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l71q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wib7k")
+}],
+"loop": false,
+"name": &"death",
 "speed": 5.0
 }, {
 "frames": [],
@@ -174,15 +222,16 @@ glowing_ball_scene = ExtResource("2_spm8d")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(22, -7)
 sprite_frames = SubResource("SpriteFrames_rwmec")
-animation = &"dash"
+animation = &"death"
 autoplay = "idle"
-frame_progress = 0.687133
+frame = 5
+frame_progress = 1.0
 offset = Vector2(0, -239)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-9, -263)
-shape = SubResource("CapsuleShape2D_utcu2")
 
 [node name="HandPosition" type="Marker2D" parent="."]
 position = Vector2(284, -354)
 scale = Vector2(4.49519, 2.49408)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9, -263)
+shape = SubResource("CapsuleShape2D_utcu2")

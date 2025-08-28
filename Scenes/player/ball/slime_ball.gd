@@ -1,19 +1,24 @@
 extends Area2D
 
-var direction: Vector2 = Vector2.ZERO
-var speed: float = 500.0
+@export var speed: float = 800.0  # You can change this value in the Inspector
+@export var damage: int = 10
 
-func _physics_process(delta: float) -> void:
+var direction: Vector2 = Vector2.ZERO
+
+func _physics_process(delta: float):
 	global_position += direction * speed * delta
 
-func _on_body_entered(body: Node2D) -> void:
+# This function is called when the ball hits something
+func _on_body_entered(body: Node2D):
+	# Check if the body it hit is the player
 	if body.is_in_group("player"):
-		body.take_damage(10)
-	
-	# The projectile should be destroyed when it hits any physics body
-	# to prevent it from continuing through walls.
-	queue_free()
+		body.take_damage(damage)
+
+	# Destroy the ball after it hits anything (player, wall, etc.)
+	# that isn't an enemy.
+	if not body.is_in_group("enemy"):
+		queue_free()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	# This is a good practice to clean up projectiles that go off-screen.
+	# Clean up the ball if it goes off-screen
 	queue_free()
