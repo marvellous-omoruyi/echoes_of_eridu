@@ -7,17 +7,27 @@ extends CharacterBody2D
 @export var dash_speed: float = 2500.0
 @export var dash_duration: float = 0.5
 @export var glowing_ball_scene: PackedScene
-@export var health: int = 100 # This is your player's health
+@export var health: int = 100
+
+signal health_changed(new_health)
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var hand_position = $HandPosition
+@onready var collision_shape = $CollisionShape2D # Get a reference to the collision shape
 
 var jump_count: int = 2
 var can_dash: bool = true
 var is_dashing: bool = false
 var dash_timer: float = 0.0
+var is_dead: bool = false # New state to track if the player is dead
 
 func _physics_process(delta: float) -> void:
+	# If the player is dead, stop all other processing
+	if is_dead:
+		velocity.y += gravity * delta
+		move_and_slide()
+		return
+
 	var vel = velocity
 
 	if is_dashing:
@@ -49,12 +59,17 @@ func _physics_process(delta: float) -> void:
 			vel.y = jump_force
 		elif jump_count == 1:
 			vel.y = double_jump_force
-		
 		jump_count -= 1
 	
 	if Input.is_action_just_pressed("ui_attack") and not is_dashing:
 		shoot_glowing_ball()
 		
+	update_animation(dir)
+		
+	velocity = vel
+	move_and_slide()
+
+func update_animation(dir):
 	if is_dashing:
 		animated_sprite.play("dash")
 	elif animated_sprite.animation == "attack" and animated_sprite.is_playing():
@@ -66,9 +81,6 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.flip_h = dir < 0
 	else:
 		animated_sprite.play("idle")
-		
-	velocity = vel
-	move_and_slide()
 
 func shoot_glowing_ball():
 	var glowing_ball_instance = glowing_ball_scene.instantiate()
@@ -90,11 +102,31 @@ func shoot_glowing_ball():
 	
 	animated_sprite.play("attack")
 
-# This function is called by a projectile when it hits the player
-func take_damage(amount: int) -> void:
+# --- MODIFIED DEATH LOGIC ---
+func take_damage(amount: int):
+	if is_dead:
+		return
+
 	health -= amount
-	print("Player took ", amount, " damage! Current health: ", health) # Optional debug line
+	health_changed.emit(health) # Let the HUD know health has changed
+
+	print("Player took ", amount, " damage! Current health: ", health)
 	
 	if health <= 0:
-		print("Player has died.")
-		queue_free() # This removes the player from the scene
+		is_dead = true
+		animated_sprite.play("death")
+		collision_shape.disabled = true
+		
+		
+
+func _ready():
+	health_changed.emit(health)
+
+func _on_animated_sprite_2d_animation_finished():
+	# When the death animation is finished, remove the player from the game
+	if animated_sprite.animation == "death":
+		queue_free()
+
+
+func _on_health_changed(new_health: Variant) -> void:
+	pass # Replace with function body.
