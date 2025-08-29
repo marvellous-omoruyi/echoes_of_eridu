@@ -1,6 +1,8 @@
 extends CanvasLayer
 
 @onready var health_bar = $HealthBar
+@onready var damage_bar = $damageBar
+@onready var timer = $Timer
 
 # This function updates the health bar's visual.
 func update_health(current_health):
