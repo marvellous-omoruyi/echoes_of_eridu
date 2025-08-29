@@ -50,3 +50,5 @@ show_percentage = false
 [node name="Timer" type="Timer" parent="HealthBar"]
 wait_time = 0.4
 one_shot = true
+
+[connection signal="timeout" from="HealthBar/Timer" to="." method="_on_timer_timeout"]

@@ -1,10 +1,12 @@
 extends Node2D
 
-# This is the corrected path to your player node.
+# This is the corrected path. Your player is inside the "TileMap" node.
 @onready var player = $TileMap/player
 @onready var hud = $HUD
 
 func _ready():
-	# Now that the script can find the player, this code will work.
+	# Set the initial health on the HUD when the level loads
 	hud.set_max_health(player.health)
+	
+	# Connect the player's health_changed signal to the HUD's update_health function
 	player.health_changed.connect(hud.update_health)
