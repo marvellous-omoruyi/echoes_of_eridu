@@ -5812,13 +5812,13 @@ offset_right = 1152.0
 offset_bottom = 682.0
 texture = ExtResource("3_46twm")
 
-[node name="HUD" parent="Player/Camera2D" instance=ExtResource("7_wn43u")]
-
 [node name="CharacterBody2D" parent="." instance=ExtResource("5_t2pc5")]
 position = Vector2(2357, -103)
 glowing_ball_scene = ExtResource("5_e3qk5")
 
 [node name="CharacterBody2D2" parent="." instance=ExtResource("6_e3qk5")]
 position = Vector2(1806, -617)
+
+[node name="HUD" parent="." instance=ExtResource("7_wn43u")]
 
 [connection signal="health_changed" from="Player" to="Player" method="_on_health_changed"]

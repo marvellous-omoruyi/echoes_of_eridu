@@ -123,10 +123,9 @@ func _ready():
 	health_changed.emit(health)
 
 func _on_animated_sprite_2d_animation_finished():
-	# When the death animation is finished, remove the player from the game
+	# When the death animation is finished, the player's body will now remain on screen.
 	if animated_sprite.animation == "death":
-		queue_free()
-
+		pass # Do nothing, just leave the player's body.
 
 func _on_health_changed(new_health: Variant) -> void:
 	pass # Replace with function body.
