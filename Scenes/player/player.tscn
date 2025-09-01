@@ -210,8 +210,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_utcu2"]
-radius = 108.665
-height = 300.0
+radius = 115.0
+height = 538.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
@@ -222,10 +222,9 @@ glowing_ball_scene = ExtResource("2_spm8d")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(22, -7)
 sprite_frames = SubResource("SpriteFrames_rwmec")
-animation = &"death"
+animation = &"idle"
 autoplay = "idle"
-frame = 5
-frame_progress = 1.0
+frame_progress = 0.390779
 offset = Vector2(0, -239)
 
 [node name="HandPosition" type="Marker2D" parent="."]
@@ -233,11 +232,12 @@ position = Vector2(284, -354)
 scale = Vector2(4.49519, 2.49408)
 
 [node name="StandingCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-9, -263)
+position = Vector2(-5, -246)
 shape = SubResource("CapsuleShape2D_utcu2")
 
 [node name="DuckingCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-9, -263)
+visible = false
+position = Vector2(-6, -242)
 shape = SubResource("CapsuleShape2D_utcu2")
 
 [node name="CoyoteTimer" type="Timer" parent="."]

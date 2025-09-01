@@ -1,5 +1,5 @@
 # player.gd
-# Polished by Maya Rivera, The Immersion Architect (v2.0)
+# Polished by Alex "CodeWizard" Morgan
 
 extends CharacterBody2D
 
@@ -15,7 +15,6 @@ extends CharacterBody2D
 @export var glowing_ball_scene: PackedScene
 
 # --- Signals (The Player's Voice) ---
-# Signals allow the player to announce important events to other nodes (like the level or HUD).
 signal health_changed(new_health)
 signal dead
 
@@ -23,7 +22,6 @@ signal dead
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var hand_position = $HandPosition
 @onready var coyote_timer = $CoyoteTimer
-# MAYA'S NOTE: These must be named exactly "StandingCollision" and "DuckingCollision" in your scene.
 @onready var standing_collision = $StandingCollision
 @onready var ducking_collision = $DuckingCollision
 
@@ -40,19 +38,15 @@ var is_ducking: bool = false
 func _ready():
 	health_changed.emit(health)
 	original_modulate = animated_sprite.modulate
-	# We start the game standing, so we make sure the ducking collision shape is disabled.
 	standing_collision.disabled = false
 	ducking_collision.disabled = true
 
 func _physics_process(delta: float) -> void:
-	# If the player is dead, we stop all other logic.
 	if is_dead:
 		velocity.y += gravity * delta
 		move_and_slide()
 		return
 
-	# --- Ducking Mechanic ---
-	# A good defensive option creates interesting choices for the player.
 	var is_crouch_pressed = Input.is_action_pressed("crouch") and is_on_floor()
 
 	if is_crouch_pressed and not is_ducking:
@@ -66,16 +60,28 @@ func _physics_process(delta: float) -> void:
 
 	var vel = velocity
 
-	# Dash Logic
+	# --- CODEWIZARD'S SPRINT FIX ---
+	# We handle the dash velocity here. This ensures the player moves at dash_speed
+	# for the entire duration of the dash.
 	if is_dashing:
 		vel.y = 0
+		# The direction is determined once at the start of the dash
+		vel.x = sign(velocity.x) * dash_speed 
 		dash_timer -= delta
 		if dash_timer <= 0:
 			is_dashing = false
+			vel.x = 0 # Stop the player after dashing to avoid sliding
+	else:
+		# Gravity
+		if not is_on_floor():
+			vel.y += gravity * delta
 
-	# Gravity
-	if not is_on_floor() and not is_dashing:
-		vel.y += gravity * delta
+		# Movement (Disabled while ducking)
+		var dir = Input.get_axis("ui_left", "ui_right")
+		if not is_ducking:
+			vel.x = dir * speed
+		else:
+			vel.x = move_toward(vel.x, 0, speed)
 
 	# Floor Reset & Coyote Time
 	if is_on_floor():
@@ -85,22 +91,20 @@ func _physics_process(delta: float) -> void:
 		if was_on_floor and not is_dashing:
 			coyote_timer.start()
 
-	# Movement (Disabled while ducking)
-	var dir = Input.get_axis("ui_left", "ui_right")
-	if not is_dashing and not is_ducking:
-		vel.x = dir * speed
-	else:
-		# Ground the player instantly when they stop moving or start ducking.
-		vel.x = move_toward(vel.x, 0, speed)
-
 	# --- Player Actions (Input Handling) ---
-	# We prevent actions while ducking to make it a deliberate defensive choice.
 	if Input.is_action_just_pressed("ui_sprint") and can_dash and not is_ducking:
 		is_dashing = true
 		can_dash = false
 		dash_timer = dash_duration
-		vel.y = 0
-		vel.x = Input.get_axis("ui_left", "ui_right") * dash_speed
+		# --- CODEWIZARD'S SPRINT FIX ---
+		# Set initial velocity for the dash
+		var dash_direction = Input.get_axis("ui_left", "ui_right")
+		if dash_direction != 0:
+			velocity.x = dash_direction * dash_speed
+		else:
+			# If no direction is pressed, dash in the direction the player is facing
+			velocity.x = (1 if not animated_sprite.flip_h else -1) * dash_speed
+
 
 	if Input.is_action_just_pressed("ui_accept") and (jump_count > 0 or not coyote_timer.is_stopped()) and not is_dashing and not is_ducking:
 		coyote_timer.stop()
@@ -114,7 +118,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_attack") and not is_dashing and not is_ducking:
 		shoot_glowing_ball()
 
-	update_animation(dir)
+	update_animation(Input.get_axis("ui_left", "ui_right"))
 
 	velocity = vel
 	move_and_slide()
@@ -122,9 +126,8 @@ func _physics_process(delta: float) -> void:
 	was_on_floor = is_on_floor()
 
 func update_animation(dir):
-	# Animation priority is key. Ducking and dashing should override other states.
 	if is_ducking:
-		animated_sprite.play("duck") # You'll need to create a "duck" animation
+		animated_sprite.play("duck")
 	elif is_dashing:
 		animated_sprite.play("dash")
 	elif animated_sprite.animation == "attack" and animated_sprite.is_playing():
@@ -150,9 +153,7 @@ func take_damage(amount: int):
 		return
 	health -= amount
 	health_changed.emit(health)
-
 	add_damage_feedback()
-
 	if health <= 0 and not is_dead:
 		is_dead = true
 		animated_sprite.play("death")
@@ -160,8 +161,6 @@ func take_damage(amount: int):
 		ducking_collision.disabled = true
 		dead.emit()
 
-# --- MAYA'S JUICE FACTORY ---
-# These functions make the game feel alive and responsive.
 func add_damage_feedback():
 	if camera:
 		var tween = get_tree().create_tween()
@@ -175,7 +174,6 @@ func shake_camera(strength: float):
 	if camera:
 		camera.offset = Vector2(randf_range(-strength, strength), randf_range(-strength, strength))
 
-# --- SIGNAL CONNECTIONS ---
 func _on_animated_sprite_2d_animation_finished():
 	if animated_sprite.animation == "death":
 		pass

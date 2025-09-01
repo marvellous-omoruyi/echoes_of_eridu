@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgi5r5vg7ptn6"]
+[gd_scene load_steps=10 format=3 uid="uid://cgi5r5vg7ptn6"]
 
 [ext_resource type="Script" uid="uid://b6tx2yshag3il" path="res://Scenes/Levels/level_scene.gd" id="1_46twm"]
 [ext_resource type="Texture2D" uid="uid://dpnhllefngo1m" path="res://Scenes/Levels/tileSettings/nobgGodot.png" id="1_kyl5h"]
 [ext_resource type="PackedScene" uid="uid://f76ipclmm6va" path="res://Scenes/player/player.tscn" id="2_h7ciu"]
 [ext_resource type="Texture2D" uid="uid://cv4detnfumiqh" path="res://Scenes/Levels/bGs/ChatGPT Image Aug 22, 2025, 04_24_20 PM.png" id="3_46twm"]
-[ext_resource type="PackedScene" uid="uid://d1f6cioem1ect" path="res://Scenes/player/ball/slimeBall.tscn" id="5_e3qk5"]
 [ext_resource type="PackedScene" uid="uid://dhb6kb2e8chkq" path="res://Scenes/Levels/ai/slime.tscn" id="5_t2pc5"]
 [ext_resource type="PackedScene" uid="uid://bqh7ow6ap7av0" path="res://Scenes/Levels/ai/ghost.tscn" id="6_e3qk5"]
 [ext_resource type="PackedScene" uid="uid://cmnykldkslefh" path="res://Scenes/player/hud.tscn" id="7_wn43u"]
@@ -5816,7 +5815,6 @@ texture = ExtResource("3_46twm")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("5_t2pc5")]
 position = Vector2(2357, -103)
-glowing_ball_scene = ExtResource("5_e3qk5")
 
 [node name="CharacterBody2D2" parent="." instance=ExtResource("6_e3qk5")]
 position = Vector2(1806, -617)

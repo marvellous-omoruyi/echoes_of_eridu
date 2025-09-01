@@ -1,6 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://dhb6kb2e8chkq"]
+[gd_scene load_steps=26 format=3 uid="uid://dhb6kb2e8chkq"]
 
 [ext_resource type="Script" uid="uid://c65g213bt548" path="res://slime.gd" id="1_y0pxb"]
+[ext_resource type="PackedScene" uid="uid://d1f6cioem1ect" path="res://Scenes/player/ball/slimeBall.tscn" id="2_1uxe7"]
 [ext_resource type="Texture2D" uid="uid://bx341l12xee0o" path="res://Scenes/Levels/ai/ChatGPT Image Aug 24, 2025, 03_55_23 AM.png" id="2_kb0rj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1uxe7"]
@@ -158,6 +159,7 @@ size = Vector2(65.1306, 44.2836)
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_y0pxb")
+slime_ball_scene = ExtResource("2_1uxe7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -2)
