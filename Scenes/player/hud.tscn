@@ -34,7 +34,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_eo6vy")
 value = 50.0
 show_percentage = false
 
-[node name="damageBar" type="ProgressBar" parent="HealthBar"]
+[node name="DamageBar" type="ProgressBar" parent="HealthBar"]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -50,5 +50,11 @@ show_percentage = false
 [node name="Timer" type="Timer" parent="HealthBar"]
 wait_time = 0.4
 one_shot = true
+
+[node name="DamageBar" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DamageTimer" type="Timer" parent="."]
 
 [connection signal="timeout" from="HealthBar/Timer" to="." method="_on_timer_timeout"]

@@ -210,8 +210,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_utcu2"]
-radius = 132.0
-height = 514.0
+radius = 108.665
+height = 300.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
@@ -232,8 +232,16 @@ offset = Vector2(0, -239)
 position = Vector2(284, -354)
 scale = Vector2(4.49519, 2.49408)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="StandingCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-9, -263)
 shape = SubResource("CapsuleShape2D_utcu2")
+
+[node name="DuckingCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-9, -263)
+shape = SubResource("CapsuleShape2D_utcu2")
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
