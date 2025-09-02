@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://f76ipclmm6va"]
+[gd_scene load_steps=46 format=3 uid="uid://f76ipclmm6va"]
 
 [ext_resource type="Texture2D" uid="uid://dtwdevc8cuy58" path="res://Scenes/player/playerImg/20250821_1648_Character Idle Animation_remix_01k36mx3adf8gbcmvtch16n986.png" id="1_6k3cy"]
 [ext_resource type="Script" uid="uid://cbjqu1tpisjxe" path="res://Scenes/player/player.gd" id="1_eo61r"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d251fx84xsfse" path="res://Scenes/player/playerImg/jump2.png" id="4_h0khc"]
 [ext_resource type="Texture2D" uid="uid://dc2cq7n8cfeyy" path="res://Scenes/Levels/bGs/sprint0.png" id="4_kysaj"]
 [ext_resource type="Texture2D" uid="uid://d2de5igikxo16" path="res://Scenes/player/playerImg/run anim 3.png" id="4_p8lfk"]
+[ext_resource type="Texture2D" uid="uid://tako4w42osvg" path="res://Scenes/player/20250901_1211_Crouching Character Frames_remix_01k42fed9be23t6d16x8a1dh7z.png" id="4_ua3np"]
 [ext_resource type="Texture2D" uid="uid://dp744g5qi11u3" path="res://Scenes/player/playerImg/jump3.png" id="5_6vj4j"]
 [ext_resource type="Texture2D" uid="uid://d0121o8xvkext" path="res://Scenes/Levels/bGs/sprint1.png" id="5_egohg"]
 [ext_resource type="Texture2D" uid="uid://dcrvo84bvkqkj" path="res://Scenes/player/playerImg/run anim 4.png" id="5_uawwb"]
@@ -34,6 +35,22 @@ region = Rect2(463, 19, 463, 546)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ua3np"]
 atlas = ExtResource("3_dpkfr")
 region = Rect2(926, 19, 463, 546)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4w3n"]
+atlas = ExtResource("4_ua3np")
+region = Rect2(0, 0, 350, 372)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yei8a"]
+atlas = ExtResource("4_ua3np")
+region = Rect2(350, 0, 350, 372)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1larn"]
+atlas = ExtResource("4_ua3np")
+region = Rect2(0, 372, 350, 372)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tiw0p"]
+atlas = ExtResource("4_ua3np")
+region = Rect2(350, 372, 350, 372)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mnu3u"]
 atlas = ExtResource("8_egohg")
@@ -101,6 +118,23 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4w3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yei8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1larn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tiw0p")
+}],
+"loop": true,
+"name": &"crouch",
 "speed": 5.0
 }, {
 "frames": [{
@@ -222,9 +256,9 @@ glowing_ball_scene = ExtResource("2_spm8d")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(22, -7)
 sprite_frames = SubResource("SpriteFrames_rwmec")
-animation = &"idle"
+animation = &"crouch"
 autoplay = "idle"
-frame_progress = 0.390779
+frame_progress = 0.840035
 offset = Vector2(0, -239)
 
 [node name="HandPosition" type="Marker2D" parent="."]

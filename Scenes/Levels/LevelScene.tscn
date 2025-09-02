@@ -5817,7 +5817,7 @@ texture = ExtResource("3_46twm")
 position = Vector2(2357, -103)
 
 [node name="CharacterBody2D2" parent="." instance=ExtResource("6_e3qk5")]
-position = Vector2(1806, -617)
+position = Vector2(870, -763)
 
 [node name="HUD" parent="." instance=ExtResource("7_wn43u")]
 
