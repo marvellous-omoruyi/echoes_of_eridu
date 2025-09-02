@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg5d7vflcydhu"]
+
+[ext_resource type="Texture2D" uid="uid://cv4detnfumiqh" path="res://Scenes/Levels/bGs/ChatGPT Image Aug 22, 2025, 04_24_20 PM.png" id="1_rv2oa"]
+[ext_resource type="Texture2D" uid="uid://u1dk3c5fht2p" path="res://Scenes/Levels/bGs/20250902_1048_Game Victory Screen_remix_01k44x36ajeqkvpw1me138bwwd.png" id="2_taeah"]
+
+[node name="winUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_rv2oa")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 1536.0
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("2_taeah")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -476.0
+offset_top = -168.0
+offset_right = -411.0
+offset_bottom = -102.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(4.22, 4.22)
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"

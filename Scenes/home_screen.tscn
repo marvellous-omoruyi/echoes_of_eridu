@@ -1,4 +1,67 @@
-[gd_scene format=3 uid="uid://by5x2d22pgjv"]
+[gd_scene load_steps=13 format=3 uid="uid://by5x2d22pgjv"]
+
+[ext_resource type="Script" uid="uid://dudr0b8bieaay" path="res://Scenes/home_screen.gd" id="1_d6d8u"]
+[ext_resource type="Texture2D" uid="uid://cv4detnfumiqh" path="res://Scenes/Levels/bGs/ChatGPT Image Aug 22, 2025, 04_24_20 PM.png" id="2_db1cy"]
+[ext_resource type="Texture2D" uid="uid://jgat58ap47mw" path="res://Scenes/player/sprint0.png" id="3_yufik"]
+[ext_resource type="Texture2D" uid="uid://coa5i8ilq8nfs" path="res://Scenes/player/sprint1.png" id="4_ianbu"]
+[ext_resource type="Texture2D" uid="uid://bx341l12xee0o" path="res://Scenes/Levels/ai/ChatGPT Image Aug 24, 2025, 03_55_23 AM.png" id="5_hfiwk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yh8n3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yufik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ianbu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajhh6"]
+atlas = ExtResource("5_hfiwk")
+region = Rect2(219, 816, 219, 204)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jo0pi"]
+atlas = ExtResource("5_hfiwk")
+region = Rect2(438, 816, 219, 204)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4kj1"]
+atlas = ExtResource("5_hfiwk")
+region = Rect2(657, 816, 219, 204)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u58f3"]
+atlas = ExtResource("5_hfiwk")
+region = Rect2(876, 816, 219, 204)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj6hq"]
+atlas = ExtResource("5_hfiwk")
+region = Rect2(1095, 816, 219, 204)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gfsw2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajhh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jo0pi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4kj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u58f3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mj6hq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="HomeScreen" type="Control"]
 layout_mode = 3
@@ -7,3 +70,56 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_d6d8u")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_db1cy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Echoes of Eridu"
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(184, 373)
+scale = Vector2(0.451172, 0.451172)
+sprite_frames = SubResource("SpriteFrames_yh8n3")
+autoplay = "default"
+frame_progress = 0.643234
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(889.349, 428.245)
+scale = Vector2(1.64887, 1.59564)
+sprite_frames = SubResource("SpriteFrames_gfsw2")
+autoplay = "default"
+frame_progress = 0.746274
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

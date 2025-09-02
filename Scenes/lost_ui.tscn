@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://c51pqgr2dy3e7"]
+
+[ext_resource type="Script" uid="uid://cjxnw80ijwwdc" path="res://lost_ui.gd" id="1_xebao"]
+[ext_resource type="Texture2D" uid="uid://bjjcbn7fbw8l8" path="res://Scenes/Levels/bGs/20250902_1028_Defeat Message_simple_compose_01k44w1haje6w8ekc1x9c099cg.png" id="2_n034j"]
+[ext_resource type="Texture2D" uid="uid://blv77a7h4ispd" path="res://Scenes/Levels/bGs/20250828_1051_Character Death Sprite_remix_01k3r19wxheg790ka9rsq8prdz.png" id="3_hevae"]
+[ext_resource type="Texture2D" uid="uid://cv4detnfumiqh" path="res://Scenes/Levels/bGs/ChatGPT Image Aug 22, 2025, 04_24_20 PM.png" id="4_3qghn"]
+
+[node name="lostUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xebao")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = -205.0
+offset_right = 1024.0
+offset_bottom = 683.0
+grow_vertical = 2
+scale = Vector2(0.645, 0.645)
+texture = ExtResource("2_n034j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 140.713
+offset_top = -290.481
+offset_right = 205.713
+offset_bottom = -224.481
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5.845, 5.845)
+
+[node name="Button" type="Button" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="Button2" type="Button" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+text = "Quit
+"
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -619.0
+offset_top = 107.0
+offset_right = 917.0
+offset_bottom = 483.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.44, 0.44)
+texture = ExtResource("3_hevae")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3qghn")
+
+[connection signal="pressed" from="TextureRect/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="TextureRect/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

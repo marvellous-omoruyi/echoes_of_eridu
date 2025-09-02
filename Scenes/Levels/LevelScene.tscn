@@ -5861,6 +5861,6 @@ position = Vector2(-1583, -825)
 position = Vector2(-1926, -616)
 
 [node name="CharacterBody2D16" parent="." instance=ExtResource("5_t2pc5")]
-position = Vector2(-1298, -1209)
+position = Vector2(-1300, -1209)
 
 [connection signal="health_changed" from="Player" to="Player" method="_on_health_changed"]

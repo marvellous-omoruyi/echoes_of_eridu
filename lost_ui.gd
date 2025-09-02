@@ -1,6 +1,5 @@
-# HomeScreen.gd
-
 extends Control
+
 
 func _on_button_pressed(): # This is for your "Start Game" button
 	# Make sure the path to your main level scene is correct!
