@@ -205,7 +205,6 @@ shape = SubResource("CapsuleShape2D_y0pxb")
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 2.0
-one_shot = true
 autostart = true
 
 [node name="DamageZone" type="Area2D" parent="."]
