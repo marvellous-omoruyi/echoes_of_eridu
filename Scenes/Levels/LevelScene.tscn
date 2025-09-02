@@ -1,12 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgi5r5vg7ptn6"]
+[gd_scene load_steps=14 format=3 uid="uid://cgi5r5vg7ptn6"]
 
-[ext_resource type="Script" uid="uid://b6tx2yshag3il" path="res://Scenes/Levels/level_scene.gd" id="1_46twm"]
 [ext_resource type="Texture2D" uid="uid://dpnhllefngo1m" path="res://Scenes/Levels/tileSettings/nobgGodot.png" id="1_kyl5h"]
 [ext_resource type="PackedScene" uid="uid://f76ipclmm6va" path="res://Scenes/player/player.tscn" id="2_h7ciu"]
 [ext_resource type="Texture2D" uid="uid://cv4detnfumiqh" path="res://Scenes/Levels/bGs/ChatGPT Image Aug 22, 2025, 04_24_20 PM.png" id="3_46twm"]
 [ext_resource type="PackedScene" uid="uid://dhb6kb2e8chkq" path="res://Scenes/Levels/ai/slime.tscn" id="5_t2pc5"]
 [ext_resource type="PackedScene" uid="uid://bqh7ow6ap7av0" path="res://Scenes/Levels/ai/ghost.tscn" id="6_e3qk5"]
 [ext_resource type="PackedScene" uid="uid://cmnykldkslefh" path="res://Scenes/player/hud.tscn" id="7_wn43u"]
+[ext_resource type="PackedScene" uid="uid://c51pqgr2dy3e7" path="res://Scenes/lost_ui.tscn" id="8_54u8i"]
+[ext_resource type="Script" uid="uid://hb77wyp80c8r" path="res://Scenes/win_ui.gd" id="9_54u8i"]
+[ext_resource type="PackedScene" uid="uid://cg5d7vflcydhu" path="res://Scenes/win_ui.tscn" id="9_abmsf"]
+
+[sub_resource type="GDScript" id="GDScript_abmsf"]
+script/source = "extends Node2D
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7ciu"]
 texture = ExtResource("1_kyl5h")
@@ -5787,8 +5793,11 @@ texture = ExtResource("1_kyl5h")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_h7ciu")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qevd"]
+size = Vector2(7610.81, 643.43)
+
 [node name="LevelScene" type="Node2D"]
-script = ExtResource("1_46twm")
+script = SubResource("GDScript_abmsf")
 metadata/_edit_horizontal_guides_ = [290.0]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -5862,5 +5871,19 @@ position = Vector2(-1926, -616)
 
 [node name="CharacterBody2D16" parent="." instance=ExtResource("5_t2pc5")]
 position = Vector2(-1300, -1209)
+
+[node name="lostUi" parent="." instance=ExtResource("8_54u8i")]
+visible = false
+
+[node name="winUI" parent="." instance=ExtResource("9_abmsf")]
+visible = false
+script = ExtResource("9_54u8i")
+
+[node name="FallDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallDetector"]
+position = Vector2(5279, 2025)
+scale = Vector2(5.365, 5.365)
+shape = SubResource("RectangleShape2D_4qevd")
 
 [connection signal="health_changed" from="Player" to="Player" method="_on_health_changed"]

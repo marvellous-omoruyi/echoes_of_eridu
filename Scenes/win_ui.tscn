@@ -42,10 +42,10 @@ grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(4.22, 4.22)
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="RestartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Restart"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="MenuButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Quit"
