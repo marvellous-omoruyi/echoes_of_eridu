@@ -5821,4 +5821,46 @@ position = Vector2(870, -763)
 
 [node name="HUD" parent="." instance=ExtResource("7_wn43u")]
 
+[node name="CharacterBody2D3" parent="." instance=ExtResource("5_t2pc5")]
+position = Vector2(882, -119)
+
+[node name="CharacterBody2D4" parent="." instance=ExtResource("5_t2pc5")]
+position = Vector2(3815, -696)
+
+[node name="CharacterBody2D5" parent="." instance=ExtResource("5_t2pc5")]
+position = Vector2(5107, -470)
+
+[node name="CharacterBody2D6" parent="." instance=ExtResource("5_t2pc5")]
+position = Vector2(7484, -111)
+
+[node name="CharacterBody2D7" parent="." instance=ExtResource("5_t2pc5")]
+position = Vector2(10144, -1013)
+
+[node name="CharacterBody2D8" parent="." instance=ExtResource("6_e3qk5")]
+position = Vector2(11638, -675)
+
+[node name="CharacterBody2D9" parent="." instance=ExtResource("5_t2pc5")]
+position = Vector2(12281, -240)
+
+[node name="CharacterBody2D10" parent="." instance=ExtResource("6_e3qk5")]
+position = Vector2(11053, -1184)
+
+[node name="CharacterBody2D11" parent="." instance=ExtResource("6_e3qk5")]
+position = Vector2(8640, -357)
+
+[node name="CharacterBody2D12" parent="." instance=ExtResource("6_e3qk5")]
+position = Vector2(6136, -783)
+
+[node name="CharacterBody2D13" parent="." instance=ExtResource("6_e3qk5")]
+position = Vector2(3045, -487)
+
+[node name="CharacterBody2D14" parent="." instance=ExtResource("6_e3qk5")]
+position = Vector2(-1583, -825)
+
+[node name="CharacterBody2D15" parent="." instance=ExtResource("6_e3qk5")]
+position = Vector2(-1926, -616)
+
+[node name="CharacterBody2D16" parent="." instance=ExtResource("5_t2pc5")]
+position = Vector2(-1298, -1209)
+
 [connection signal="health_changed" from="Player" to="Player" method="_on_health_changed"]

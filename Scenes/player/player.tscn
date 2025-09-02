@@ -270,7 +270,6 @@ position = Vector2(-5, -246)
 shape = SubResource("CapsuleShape2D_utcu2")
 
 [node name="DuckingCollision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-6, -242)
 shape = SubResource("CapsuleShape2D_utcu2")
 

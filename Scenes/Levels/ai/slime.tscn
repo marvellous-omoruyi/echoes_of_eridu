@@ -174,14 +174,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y0pxb"]
-radius = 7.17655
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y0pxb"]
 size = Vector2(1867, 542)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kb0rj"]
-size = Vector2(65.1306, 44.2836)
+size = Vector2(87.0464, 44.2836)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y0pxb"]
+radius = 7.17655
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 5
@@ -189,28 +189,24 @@ script = ExtResource("1_y0pxb")
 slime_ball_scene = ExtResource("2_1uxe7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-2, -2)
-scale = Vector2(1.9467, 1.9467)
+position = Vector2(139.678, -156.36)
+scale = Vector2(3.35643, 3.4168)
 sprite_frames = SubResource("SpriteFrames_fj0kf")
 animation = &"attack_anticipation"
 
 [node name="ShootPoint" type="Marker2D" parent="AnimatedSprite2D"]
-position = Vector2(-128.936, 2.05476)
+position = Vector2(-128.401, -26.7544)
 scale = Vector2(0.51369, 0.51369)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-11, -5)
-scale = Vector2(15.8851, 8.3467)
-shape = SubResource("CapsuleShape2D_y0pxb")
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
 
-[node name="DamageZone" type="Area2D" parent="."]
+[node name="DamageZone" type="Area2D" parent="." groups=["enemy"]]
 position = Vector2(-259, 0)
 scale = Vector2(0.12, 1)
-collision_layer = 0
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageZone"]
 position = Vector2(-58.5, -134)
@@ -219,13 +215,18 @@ shape = SubResource("RectangleShape2D_y0pxb")
 [node name="ContactDamageTimer" type="Timer" parent="."]
 
 [node name="DetectionZone" type="Area2D" parent="."]
-collision_layer = 2
+collision_layer = 6
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone"]
-position = Vector2(-302.5, -166.1)
+position = Vector2(-0.499878, -166.1)
 scale = Vector2(27.56, 13.68)
 shape = SubResource("RectangleShape2D_kb0rj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(124.161, -161.626)
+scale = Vector2(27.3885, 14.6499)
+shape = SubResource("CapsuleShape2D_y0pxb")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
