@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://by5x2d22pgjv"]
+[gd_scene load_steps=16 format=3 uid="uid://by5x2d22pgjv"]
 
 [ext_resource type="Script" uid="uid://dudr0b8bieaay" path="res://Scenes/home_screen.gd" id="1_d6d8u"]
 [ext_resource type="Texture2D" uid="uid://bu257j4uyln1j" path="res://Scenes/ChatGPT Image Sep 5, 2025, 01_17_52 AM.png" id="2_ianbu"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://coa5i8ilq8nfs" path="res://Scenes/player/sprint1.png" id="4_ianbu"]
 [ext_resource type="Texture2D" uid="uid://bx341l12xee0o" path="res://Scenes/Levels/ai/ChatGPT Image Aug 24, 2025, 03_55_23 AM.png" id="5_hfiwk"]
 [ext_resource type="Texture2D" uid="uid://djfh5s4wv4yp8" path="res://Scenes/ChatGPT Image Sep 5, 2025, 02_02_09 AM.png" id="6_hfiwk"]
+[ext_resource type="AudioStream" uid="uid://k0wt0qj2abbp" path="res://Scenes/Dark-Knight-chosic.com_.mp3" id="8_yh8n3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yh8n3"]
 animations = [{
@@ -157,6 +158,11 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.235, 0.235)
 texture = ExtResource("6_hfiwk")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_yh8n3")
+volume_db = 24.0
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
