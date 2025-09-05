@@ -159,10 +159,12 @@ func take_damage(amount: int):
 		has_dead = true
 		is_dead = true
 		animated_sprite.play("death")
-		standing_collision.disabled = true
-		ducking_collision.disabled = true
+		# --- CODEWIZARD'S FIX ---
+		# Defer disabling shapes to avoid physics errors.
+		standing_collision.set_deferred("disabled", true)
+		ducking_collision.set_deferred("disabled", true)
 		dead.emit()
-
+		
 func add_damage_feedback():
 	if camera:
 		var tween = get_tree().create_tween()

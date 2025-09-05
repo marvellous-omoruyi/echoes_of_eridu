@@ -9,29 +9,25 @@ extends Node2D
 
 var is_game_over: bool = false
 
-var playerCon = playerglob.has_dead 
-
-
-
 func _process(delta: float):
-	if $Player.has_dead:
-		get_tree().change_scene_to_file("res://Scenes/lost_ui.tscn")
+	# --- CODEWIZARD'S FIX ---
+	# This guard clause prevents the game from crashing during scene changes.
+	# If the level is no longer in the main scene tree, we stop processing.
+	if not is_inside_tree():
+		return
+
+	if $Player.has_dead and not is_game_over:
+		show_lose_screen() # Call the function to handle game over logic
+
 	if is_game_over:
 		return
 		
 	# Win Condition: Check if there are no more enemies
 	var enemies = get_tree().get_nodes_in_group("enemy")
-	# --- CODEWIZARD'S DEBUG ---
-	# This will constantly print the number of enemies remaining.
-	# If this number doesn't go down when you kill an enemy, they aren't in the "enemy" group.
-	# print("Enemies remaining: ", enemies.size()) 
-	
 	if enemies.is_empty():
 		show_win_screen()
 
 func _on_fall_detector_body_entered(body: Node):
-	# --- CODEWIZARD'S DEBUG ---
-	print("FallDetector entered by: ", body.name)
 	if body.is_in_group("player"):
 		show_lose_screen()
 
@@ -39,15 +35,10 @@ func show_win_screen():
 	if is_game_over:
 		return
 	is_game_over = true
-	# --- CODEWIZARD'S DEBUG ---
-	print("WIN CONDITION MET! Changing to win_ui.tscn")
 	get_tree().change_scene_to_file("res://Scenes/win_ui.tscn")
 
 func show_lose_screen():
 	if is_game_over:
 		return
 	is_game_over = true
-	# --- CODEWIZARD'S DEBUG ---
-	print("LOSE CONDITION MET! Changing to lost_ui.tscn")
 	get_tree().change_scene_to_file("res://Scenes/lost_ui.tscn")
-	
