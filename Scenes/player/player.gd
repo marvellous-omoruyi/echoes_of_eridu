@@ -13,6 +13,7 @@ extends CharacterBody2D
 @export var health: int = 100
 @export var camera: Camera2D
 @export var glowing_ball_scene: PackedScene
+@export var has_dead = false
 
 # --- Signals (The Player's Voice) ---
 signal health_changed(new_health)
@@ -155,6 +156,7 @@ func take_damage(amount: int):
 	health_changed.emit(health)
 	add_damage_feedback()
 	if health <= 0 and not is_dead:
+		has_dead = true
 		is_dead = true
 		animated_sprite.play("death")
 		standing_collision.disabled = true
@@ -177,3 +179,4 @@ func shake_camera(strength: float):
 func _on_animated_sprite_2d_animation_finished():
 	if animated_sprite.animation == "death":
 		pass
+		
