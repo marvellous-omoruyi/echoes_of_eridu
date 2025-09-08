@@ -15,6 +15,7 @@ extends CharacterBody2D
 # Get a reference to the Marker2D node used for precise spawning.
 # Make sure you have a Marker2D named "ShootPoint" as a child of your AnimatedSprite2D.
 @onready var shoot_point = $AnimatedSprite2D/ShootPoint
+@onready var music_player = $AudioStreamPlayer2D
 
 var direction: float = 1.0
 var start_position_x: float
@@ -109,6 +110,7 @@ func shoot_slime_ball():
 	slime_ball_instance.set("direction", shoot_direction) 
 
 	get_tree().get_root().add_child(slime_ball_instance)
+	music_player.play()
 
 # --- Signal Connections ---
 func _on_detection_zone_body_entered(body):

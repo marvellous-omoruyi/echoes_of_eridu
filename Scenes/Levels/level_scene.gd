@@ -8,6 +8,10 @@ extends Node2D
 @onready var fall_detector = $FallDetector
 
 var is_game_over: bool = false
+@onready var music_player = $AudioStreamPlayer2D
+func _ready():
+	# Play the music as soon as the scene is ready
+	music_player.play()
 
 func _process(delta: float):
 	# --- CODEWIZARD'S FIX ---

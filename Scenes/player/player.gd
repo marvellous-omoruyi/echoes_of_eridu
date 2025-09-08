@@ -3,6 +3,7 @@
 
 extends CharacterBody2D
 
+
 # --- Player Attributes ---
 @export var speed: float = 1000.0
 @export var jump_force: float = -700.0
@@ -14,6 +15,7 @@ extends CharacterBody2D
 @export var camera: Camera2D
 @export var glowing_ball_scene: PackedScene
 @export var has_dead = false
+@onready var music_player = $AudioStreamPlayer2D
 
 # --- Signals (The Player's Voice) ---
 signal health_changed(new_health)
@@ -148,6 +150,7 @@ func shoot_glowing_ball():
 	glowing_ball_instance.direction = shoot_direction
 	get_tree().get_root().add_child(glowing_ball_instance)
 	animated_sprite.play("attack")
+	music_player.play()
 
 func take_damage(amount: int):
 	if is_dead:

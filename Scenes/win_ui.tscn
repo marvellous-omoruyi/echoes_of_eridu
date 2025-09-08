@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cg5d7vflcydhu"]
+[gd_scene load_steps=4 format=3 uid="uid://cg5d7vflcydhu"]
 
 [ext_resource type="Texture2D" uid="uid://cv4detnfumiqh" path="res://Scenes/Levels/bGs/ChatGPT Image Aug 22, 2025, 04_24_20 PM.png" id="1_rv2oa"]
 [ext_resource type="Texture2D" uid="uid://u1dk3c5fht2p" path="res://Scenes/Levels/bGs/20250902_1048_Game Victory Screen_remix_01k44x36ajeqkvpw1me138bwwd.png" id="2_taeah"]
+[ext_resource type="AudioStream" uid="uid://k0wt0qj2abbp" path="res://Scenes/Dark-Knight-chosic.com_.mp3" id="3_taeah"]
 
 [node name="winUI" type="Control"]
 layout_mode = 3
@@ -49,3 +50,6 @@ text = "Restart"
 [node name="MenuButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_taeah")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cgi5r5vg7ptn6"]
+[gd_scene load_steps=15 format=3 uid="uid://cgi5r5vg7ptn6"]
 
 [ext_resource type="Script" uid="uid://b6tx2yshag3il" path="res://Scenes/Levels/level_scene.gd" id="1_46twm"]
 [ext_resource type="Texture2D" uid="uid://dpnhllefngo1m" path="res://Scenes/Levels/tileSettings/nobgGodot.png" id="1_kyl5h"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c51pqgr2dy3e7" path="res://Scenes/lost_ui.tscn" id="8_54u8i"]
 [ext_resource type="Script" uid="uid://hb77wyp80c8r" path="res://Scenes/win_ui.gd" id="9_54u8i"]
 [ext_resource type="PackedScene" uid="uid://cg5d7vflcydhu" path="res://Scenes/win_ui.tscn" id="9_abmsf"]
+[ext_resource type="AudioStream" uid="uid://i5ofecqo7imq" path="res://Scenes/action-loop-e-90-bpm-brvhrtz-233462.mp3" id="11_4qevd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7ciu"]
 texture = ExtResource("1_kyl5h")
@@ -5882,5 +5883,9 @@ script = ExtResource("9_54u8i")
 position = Vector2(5279, 2025)
 scale = Vector2(5.365, 5.365)
 shape = SubResource("RectangleShape2D_4qevd")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_4qevd")
+autoplay = true
 
 [connection signal="health_changed" from="Player" to="Player" method="_on_health_changed"]

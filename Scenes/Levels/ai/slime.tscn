@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://dhb6kb2e8chkq"]
+[gd_scene load_steps=30 format=3 uid="uid://dhb6kb2e8chkq"]
 
 [ext_resource type="Script" uid="uid://c65g213bt548" path="res://slime.gd" id="1_y0pxb"]
 [ext_resource type="PackedScene" uid="uid://d1f6cioem1ect" path="res://Scenes/player/ball/slimeBall.tscn" id="2_1uxe7"]
 [ext_resource type="Texture2D" uid="uid://bx341l12xee0o" path="res://Scenes/Levels/ai/ChatGPT Image Aug 24, 2025, 03_55_23 AM.png" id="2_kb0rj"]
+[ext_resource type="AudioStream" uid="uid://bm4e6dl47dff7" path="res://Scenes/slime-impact-352473.mp3" id="4_1uxe7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kb0rj"]
 atlas = ExtResource("2_kb0rj")
@@ -227,6 +228,9 @@ shape = SubResource("RectangleShape2D_kb0rj")
 position = Vector2(124.161, -161.626)
 scale = Vector2(27.3885, 14.6499)
 shape = SubResource("CapsuleShape2D_y0pxb")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_1uxe7")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

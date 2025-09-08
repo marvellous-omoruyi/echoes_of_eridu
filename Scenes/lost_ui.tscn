@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c51pqgr2dy3e7"]
+[gd_scene load_steps=6 format=3 uid="uid://c51pqgr2dy3e7"]
 
 [ext_resource type="Script" uid="uid://cjxnw80ijwwdc" path="res://lost_ui.gd" id="1_xebao"]
 [ext_resource type="Texture2D" uid="uid://bjjcbn7fbw8l8" path="res://Scenes/Levels/bGs/20250902_1028_Defeat Message_simple_compose_01k44w1haje6w8ekc1x9c099cg.png" id="2_n034j"]
 [ext_resource type="Texture2D" uid="uid://blv77a7h4ispd" path="res://Scenes/Levels/bGs/20250828_1051_Character Death Sprite_remix_01k3r19wxheg790ka9rsq8prdz.png" id="3_hevae"]
 [ext_resource type="Texture2D" uid="uid://cv4detnfumiqh" path="res://Scenes/Levels/bGs/ChatGPT Image Aug 22, 2025, 04_24_20 PM.png" id="4_3qghn"]
+[ext_resource type="AudioStream" uid="uid://k0wt0qj2abbp" path="res://Scenes/Dark-Knight-chosic.com_.mp3" id="5_n034j"]
 
 [node name="lostUi" type="Control"]
 layout_mode = 3
@@ -16,49 +17,28 @@ script = ExtResource("1_xebao")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_top = -205.0
-offset_right = 1024.0
-offset_bottom = 683.0
-grow_vertical = 2
-scale = Vector2(0.645, 0.645)
-texture = ExtResource("2_n034j")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 140.713
-offset_top = -290.481
-offset_right = 205.713
-offset_bottom = -224.481
-grow_horizontal = 2
+offset_left = -25.0
+offset_top = -333.0
+offset_right = 999.0
+offset_bottom = 1203.0
 grow_vertical = 2
-scale = Vector2(5.845, 5.845)
-
-[node name="Button" type="Button" parent="TextureRect/VBoxContainer"]
-layout_mode = 2
-text = "Restart"
-
-[node name="Button2" type="Button" parent="TextureRect/VBoxContainer"]
-layout_mode = 2
-text = "Quit
-"
+scale = Vector2(0.505, 0.505)
+texture = ExtResource("2_n034j")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 6
 anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -619.0
-offset_top = 107.0
-offset_right = 917.0
-offset_bottom = 483.0
+anchor_bottom = 0.5
+offset_left = -906.0
+offset_top = -163.0
+offset_right = 630.0
+offset_bottom = 861.0
 grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(0.44, 0.44)
@@ -74,5 +54,36 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_3qghn")
 
-[connection signal="pressed" from="TextureRect/VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="TextureRect/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_n034j")
+autoplay = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 251.0
+offset_top = -171.0
+offset_right = 316.0
+offset_bottom = -105.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.46, 3.46)
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.998011, 0.379254, 0, 1)
+theme_override_colors/font_color = Color(2.69532e-06, 0.895564, 0.886425, 1)
+text = "Restart"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+text = "Quit
+"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
