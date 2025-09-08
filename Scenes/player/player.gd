@@ -156,6 +156,7 @@ func take_damage(amount: int):
 	if is_dead:
 		return
 	health -= amount
+	
 	health_changed.emit(health)
 	add_damage_feedback()
 	if health <= 0 and not is_dead:

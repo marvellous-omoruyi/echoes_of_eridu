@@ -6,12 +6,17 @@ extends Node2D
 @onready var player = $Player
 @onready var hud = $HUD
 @onready var fall_detector = $FallDetector
+@onready var healthbar = $HealthBar
 
 var is_game_over: bool = false
 @onready var music_player = $AudioStreamPlayer2D
+@onready var health
 func _ready():
+	health = player.health
 	# Play the music as soon as the scene is ready
 	music_player.play()
+	healthbar.init_health(health)
+	
 
 func _process(delta: float):
 	# --- CODEWIZARD'S FIX ---

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cgi5r5vg7ptn6"]
+[gd_scene load_steps=16 format=3 uid="uid://cgi5r5vg7ptn6"]
 
 [ext_resource type="Script" uid="uid://b6tx2yshag3il" path="res://Scenes/Levels/level_scene.gd" id="1_46twm"]
 [ext_resource type="Texture2D" uid="uid://dpnhllefngo1m" path="res://Scenes/Levels/tileSettings/nobgGodot.png" id="1_kyl5h"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://hb77wyp80c8r" path="res://Scenes/win_ui.gd" id="9_54u8i"]
 [ext_resource type="PackedScene" uid="uid://cg5d7vflcydhu" path="res://Scenes/win_ui.tscn" id="9_abmsf"]
 [ext_resource type="AudioStream" uid="uid://i5ofecqo7imq" path="res://Scenes/action-loop-e-90-bpm-brvhrtz-233462.mp3" id="11_4qevd"]
+[ext_resource type="PackedScene" uid="uid://bknilusr4bcrg" path="res://Scenes/health_bar.tscn" id="12_ug3ka"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7ciu"]
 texture = ExtResource("1_kyl5h")
@@ -5814,10 +5815,16 @@ zoom = Vector2(0.5, 0.5)
 
 [node name="TextureRect" type="TextureRect" parent="Player/Camera2D"]
 z_index = -1
-offset_left = -1154.0
-offset_top = -653.0
-offset_right = 1152.0
-offset_bottom = 682.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1930.0
+offset_top = -2051.0
+offset_right = 1931.0
+offset_bottom = -152.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.515, 1.515)
 texture = ExtResource("3_46twm")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("5_t2pc5")]
@@ -5827,6 +5834,7 @@ position = Vector2(2357, -103)
 position = Vector2(870, -763)
 
 [node name="HUD" parent="." instance=ExtResource("7_wn43u")]
+visible = false
 
 [node name="CharacterBody2D3" parent="." instance=ExtResource("5_t2pc5")]
 position = Vector2(882, -119)
@@ -5887,5 +5895,7 @@ shape = SubResource("RectangleShape2D_4qevd")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_4qevd")
 autoplay = true
+
+[node name="HealthBar" parent="." instance=ExtResource("12_ug3ka")]
 
 [connection signal="health_changed" from="Player" to="Player" method="_on_health_changed"]
