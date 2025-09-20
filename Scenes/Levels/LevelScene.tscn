@@ -5897,5 +5897,6 @@ stream = ExtResource("11_4qevd")
 autoplay = true
 
 [node name="HealthBar" parent="." instance=ExtResource("12_ug3ka")]
+visible = false
 
 [connection signal="health_changed" from="Player" to="Player" method="_on_health_changed"]

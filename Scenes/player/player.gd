@@ -27,6 +27,7 @@ signal dead
 @onready var coyote_timer = $CoyoteTimer
 @onready var standing_collision = $StandingCollision
 @onready var ducking_collision = $DuckingCollision
+@onready var healthbar = $CanvasLayer/HealthBar
 
 # --- State Variables ---
 var jump_count: int = 2
@@ -43,6 +44,7 @@ func _ready():
 	original_modulate = animated_sprite.modulate
 	standing_collision.disabled = false
 	ducking_collision.disabled = true
+	healthbar.init_health(health)
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -168,7 +170,7 @@ func take_damage(amount: int):
 		standing_collision.set_deferred("disabled", true)
 		ducking_collision.set_deferred("disabled", true)
 		dead.emit()
-		
+	healthbar.health= health	
 func add_damage_feedback():
 	if camera:
 		var tween = get_tree().create_tween()

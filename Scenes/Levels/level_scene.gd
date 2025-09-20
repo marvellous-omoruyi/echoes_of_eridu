@@ -17,6 +17,7 @@ func _ready():
 	music_player.play()
 	healthbar.init_health(health)
 	
+	
 
 func _process(delta: float):
 	# --- CODEWIZARD'S FIX ---
