@@ -203,7 +203,7 @@ scale = Vector2(0.51369, 0.51369)
 wait_time = 2.0
 autostart = true
 
-[node name="DamageZone" type="Area2D" parent="." groups=["enemy"]]
+[node name="DamageZone" type="Area2D" parent="."]
 position = Vector2(-259, 0)
 scale = Vector2(0.12, 1)
 collision_layer = 4

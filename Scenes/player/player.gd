@@ -17,6 +17,9 @@ extends CharacterBody2D
 @export var has_dead = false
 @onready var music_player = $AudioStreamPlayer2D
 
+# --- NEW: Constant for hand position ---
+const HAND_POS_X: float = 284.0 # Original X position from player.tscn
+
 # --- Signals (The Player's Voice) ---
 signal health_changed(new_health)
 signal dead
@@ -130,18 +133,30 @@ func _physics_process(delta: float) -> void:
 
 	was_on_floor = is_on_floor()
 
-func update_animation(dir):
+# --- MODIFIED: This function is completely updated ---
+func update_animation(dir: float):
+	# 1. Update facing direction based on input (works on ground and in air)
+	if dir != 0:
+		animated_sprite.flip_h = dir < 0
+
+	# 2. Update hand position to match the character's direction
+	# This ensures the glowing ball always spawns from the correct side.
+	if animated_sprite.flip_h: # Facing Left
+		hand_position.position.x = -HAND_POS_X
+	else: # Facing Right
+		hand_position.position.x = HAND_POS_X
+
+	# 3. Set the correct animation based on the player's state
 	if is_ducking:
 		animated_sprite.play("duck")
 	elif is_dashing:
 		animated_sprite.play("dash")
 	elif animated_sprite.animation == "attack" and animated_sprite.is_playing():
-		pass
+		pass # Allow attack animation to finish playing
 	elif not is_on_floor():
 		animated_sprite.play("jump")
 	elif dir != 0:
 		animated_sprite.play("run")
-		animated_sprite.flip_h = dir < 0
 	else:
 		animated_sprite.play("idle")
 
@@ -167,10 +182,11 @@ func take_damage(amount: int):
 		animated_sprite.play("death")
 		# --- CODEWIZARD'S FIX ---
 		# Defer disabling shapes to avoid physics errors.
-		standing_collision.set_deferred("disabled", true)
+		standing_collision.set_deferred("disabled", false)
 		ducking_collision.set_deferred("disabled", true)
 		dead.emit()
 	healthbar.health= health	
+	
 func add_damage_feedback():
 	if camera:
 		var tween = get_tree().create_tween()
@@ -187,4 +203,3 @@ func shake_camera(strength: float):
 func _on_animated_sprite_2d_animation_finished():
 	if animated_sprite.animation == "death":
 		pass
-		

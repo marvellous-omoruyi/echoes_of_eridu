@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b01b8bh60w6u7"]
+[gd_scene load_steps=7 format=3 uid="uid://d7164jx2j202"]
 
 [ext_resource type="Texture2D" uid="uid://dpnhllefngo1m" path="res://Scenes/Levels/tileSettings/nobgGodot.png" id="1_pgcq8"]
+[ext_resource type="Script" uid="uid://clvimcfjpdl8h" path="res://Scenes/Levels/mainlevelel.gd" id="1_y7f6s"]
 [ext_resource type="PackedScene" uid="uid://f76ipclmm6va" path="res://Scenes/player/player.tscn" id="2_sdo6p"]
+[ext_resource type="PackedScene" uid="uid://gq6plylp0erx" path="res://levelNumUopate.tscn" id="4_3pj06"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sdo6p"]
 texture = ExtResource("1_pgcq8")
@@ -6824,6 +6826,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_sdo6p")
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_y7f6s")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(66, 249)
@@ -6837,3 +6840,11 @@ position = Vector2(29, -239)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -458)
 zoom = Vector2(0.5, 0.5)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("4_3pj06")]
+visible = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.893
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

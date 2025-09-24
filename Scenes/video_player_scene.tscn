@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://3jw0hrctdnum"]
+[gd_scene load_steps=4 format=3 uid="uid://3jw0hrctdnum"]
 
 [ext_resource type="Script" uid="uid://c4mb6ua6gqpwx" path="res://video_player_scene.gd" id="1_4q3o5"]
 [ext_resource type="VideoStream" uid="uid://bgkmbb2abdwqr" path="res://Scenes/mainintro.ogv" id="2_3fova"]
+[ext_resource type="Texture2D" uid="uid://c54vdoi6qop8d" path="res://Asset/arrow-right.svg" id="3_3fova"]
 
 [node name="VideoPlayerScene" type="Control"]
 layout_mode = 3
@@ -22,4 +23,34 @@ grow_vertical = 2
 stream = ExtResource("2_3fova")
 autoplay = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -335.0
+offset_top = -153.0
+offset_right = 889.0
+offset_bottom = 367.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.225, 0.225)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0.992157, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 1, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 271
+text = "Next  "
+icon = ExtResource("3_3fova")
+flat = true
+icon_alignment = 2
+
 [connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

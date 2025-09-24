@@ -8,7 +8,8 @@ func _ready():
 
 func _on_button_pressed(): # This is for your "Start Game" button
 	# Make sure the path to your main level scene is correct!
-	get_tree().change_scene_to_file("res://Scenes/Levels/LevelScene.tscn")
+	music_player.stop()   
+	SceneLoader.load_scene("res://Scenes/Levels/LevelScene.tscn")
 
 
 func _on_button_2_pressed(): # This is for your "Quit" button

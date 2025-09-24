@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd2eubhof0rd"]
+
+[ext_resource type="Script" uid="uid://clut1r5o3ml3a" path="res://loading_screen.gd" id="1_dhqi2"]
+[ext_resource type="Texture2D" uid="uid://bu257j4uyln1j" path="res://Scenes/ChatGPT Image Sep 5, 2025, 01_17_52 AM.png" id="1_ghsbh"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_dhqi2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -19.0
+offset_right = 184.0
+offset_bottom = 357.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ghsbh")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -193.5
+offset_top = -63.0
+offset_right = 193.5
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -69.5
+offset_top = -108.0
+offset_right = 70.5
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "Loading..."

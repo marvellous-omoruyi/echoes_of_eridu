@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://gq6plylp0erx"]
+
+[ext_resource type="Script" uid="uid://dbg8epplx5liq" path="res://level_num_uopate.gd" id="1_1dw0u"]
+[ext_resource type="PackedScene" uid="uid://d1lhbv87dh04n" path="res://levelNumber.tscn" id="2_rpp1a"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_1dw0u")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 133.0
+offset_top = -121.0
+offset_right = 173.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(8.69, 8.69)
+
+[node name="Node2D" parent="." instance=ExtResource("2_rpp1a")]
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -239.0
+offset_top = -120.0
+offset_right = -198.0
+offset_bottom = -97.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(8.69, 8.69)
+text = "Level"

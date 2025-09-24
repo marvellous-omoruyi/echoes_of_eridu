@@ -54,7 +54,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_3qghn")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_n034j")
 autoplay = true
 

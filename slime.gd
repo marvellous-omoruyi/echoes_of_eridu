@@ -4,7 +4,7 @@
 extends CharacterBody2D
 
 @export var speed: float = 150.0
-@export var patrol_distance: float = 200.0
+@export var patrol_distance: float = 500.0
 @export var health: int = 100
 @export var slime_ball_scene: PackedScene 
 @export var contact_damage: int = 1
